@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from 'react-router-dom';
 import '../assets/styles/Header.css';
 import AppCenterLogo from '../assets/images/AppCenterLogo.jsx';
 
