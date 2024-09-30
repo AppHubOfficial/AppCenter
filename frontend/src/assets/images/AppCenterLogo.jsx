@@ -1,13 +1,15 @@
 import React from "react";
+import "../styles/AppCenterLogo.css"
 
 function AppCenterLogo() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="512"
-      height="512"
+      width="200"
+      height="200"
       version="1.1"
       viewBox="0 0 512 512"
+      className="appCenterLogo"
     >
       <g>
         <path
