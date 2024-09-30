@@ -1,21 +1,29 @@
-import { useState } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 
 import Header from "./components/Header";
+import Home from './pages/Home';
+import Page404 from './pages/Page404';
+/*import About from './pages/About';
+import Contact from './pages/Contact';
+import ChatRoom from './pages/ChatRoom';*/
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Header />,
+    errorElement: <Page404 />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [apps, setApps] = useState([
-    { id: 1, name: 'App 1', description: 'This is a description for App 1.' },
-    { id: 2, name: 'App 2', description: 'This is a description for App 2.' },
-    { id: 3, name: 'App 3', description: 'This is a description for App 3.' }
-  ]);
-
-  return (
-    <div>
-      <Header></Header>
-      
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
