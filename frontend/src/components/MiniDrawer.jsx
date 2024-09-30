@@ -12,8 +12,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+
+import GamesIcon from '@mui/icons-material/VideogameAsset'; // Icona per Giochi
+import WorkIcon from '@mui/icons-material/Work'; // Icona per Produttività
+import PhotoIcon from '@mui/icons-material/Photo'; // Icona per Multimedia
+import SecurityIcon from '@mui/icons-material/Security'; // Icona per Sicurezza
+import BuildIcon from '@mui/icons-material/Build'; // Icona per Utilità
 
 
 
@@ -55,7 +59,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
     position: 'fixed', // Drawer fisso rispetto alla pagina
-    top: '64px', // Imposta lo spazio necessario sotto l'Header
+    top: '64px', 
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -100,7 +104,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Giochi', 'Produttività', 'Multimedia', 'Sicurezza', 'Utilità'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -116,7 +120,11 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index === 0 ? <GamesIcon /> :
+                   index === 1 ? <WorkIcon /> :
+                   index === 2 ? <PhotoIcon /> :
+                   index === 3 ? <SecurityIcon /> :
+                   <BuildIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -125,28 +133,7 @@ export default function MiniDrawer() {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {/* Aggiungi ulteriori categorie se necessario */}
         </List>
       </Drawer>
     </Box>
