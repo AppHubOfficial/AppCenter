@@ -1,14 +1,19 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css';
 
 import Header from "./components/Header";
 import Home from './pages/Home';
 import Page404 from './pages/Page404';
+import MiniDrawer from './components/MiniDrawer';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Header />, 
+    element: (
+      <>
+        <Header />
+        <MiniDrawer />
+      </>
+    ),
     errorElement: <Page404 />,
     children: [
       {
